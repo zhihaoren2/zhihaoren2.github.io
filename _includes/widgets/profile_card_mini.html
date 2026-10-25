@@ -1,0 +1,37 @@
+<!-- The original project's left-hand sticky academic profile, with a two-photo hover. -->
+<aside class="row sticky-top profile-sticky" style="top: 80px" aria-label="Researcher information">
+  <div class="col">
+    <div class="card border-0 shadow-sm bg-white profile-card">
+      <div class="card-body px-4 pt-4 pb-3">
+        {% if site.data.profile.portrait_url %}
+        <figure class="profile-photo-switch" tabindex="0" aria-label="Photograph of {{ site.data.profile.primary_name }}. Hover to view a second photograph.">
+          <img class="profile-photo-primary" src="{{ site.data.profile.portrait_url | relative_url }}" alt="{{ site.data.profile.primary_name }} — profile portrait" width="600" height="680" fetchpriority="high">
+          {% if site.data.profile.portrait_hover_url %}
+          <img class="profile-photo-alternate" src="{{ site.data.profile.portrait_hover_url | relative_url }}" alt="" width="600" height="680" aria-hidden="true">
+          {% endif %}
+          <span class="profile-photo-hint" aria-hidden="true">Hover to switch photo</span>
+        </figure>
+        {% endif %}
+        <div class="text-center h4 profile-person-name">{{ site.data.profile.primary_name }}</div>
+        <div class="text-center small text-profile-position profile-positions">
+          {% for position in site.data.profile.positions %}<div>{{ position.name }}</div>{% endfor %}
+        </div>
+        {% if site.data.profile.email and site.data.profile.email != '' %}
+        <p class="text-center small profile-email"><a href="mailto:{{ site.data.profile.email }}">{{ site.data.profile.email }}</a></p>
+        {% endif %}
+        <nav class="profile-social" aria-label="Academic profiles">
+          {% if site.data.profile.cv_link %}<a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span></a>{% endif %}
+          {% if site.data.profile.gscholar %}
+            {% assign gscholar_url = site.data.profile.gscholar %}
+            {% unless gscholar_url contains 'scholar.google' %}{% assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: gscholar_url %}{% endunless %}
+            <a href="{{ gscholar_url }}" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+          {% endif %}
+          {% if site.data.profile.orcid %}<a href="https://orcid.org/{{ site.data.profile.orcid }}" target="_blank" rel="noopener noreferrer">ORCID <span aria-hidden="true">↗</span></a>{% endif %}
+          {% if site.data.profile.linkedin %}<a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
+          {% if site.data.profile.github %}<a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>{% endif %}
+          {% if site.data.profile.email and site.data.profile.email != '' %}<a href="mailto:{{ site.data.profile.email }}">Email <span aria-hidden="true">↗</span></a>{% endif %}
+        </nav>
+      </div>
+    </div>
+  </div>
+</aside>

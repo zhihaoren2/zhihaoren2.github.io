@@ -1,0 +1,32 @@
+{% assign item = include.item %}
+{% assign big_image = item.preview | default: item.cover %}
+<!-- Retains the official publication card's bootstrap row structure and metadata. -->
+<article class="row no-gutters publication-apple-item border-bottom">
+  {% if item.cover %}
+  <div class="col-12 col-sm-3 col-xl-2 p-3 publication-thumbnail-column">
+    <button type="button" class="publication-preview-trigger" data-preview-src="{{ big_image | relative_url }}" data-preview-title="{{ item.title | escape }}" aria-label="View large figure for {{ item.title | escape }}" title="Hover to see a larger image; click to open">
+      <img src="{{ item.cover | relative_url }}" alt="Thumbnail for {{ item.title | escape }}" class="publication-thumb" loading="lazy" decoding="async">
+      <span class="publication-enlarge-icon" aria-hidden="true">↗</span>
+    </button>
+  </div>
+  <div class="col-12 col-sm-9 col-xl-10 p-3 {% if item.cover %}pl-sm-0{% endif %}">
+  {% else %}
+  <div class="col p-3">
+  {% endif %}
+    <h5 class="mt-0 mb-1 font-weight-normal publication-title">{{ item.title }}</h5>
+    <p class="mt-0 mb-0 small publication-authors">{% include widgets/author_list.html authors=item.authors %}</p>
+    <p class="mt-0 mb-1 small publication-journal">{{ item.pub_pre }}<i>{{ item.pub }}</i>{{ item.pub_post }} {{ item.pub_date }} {{ item.pub_last }}</p>
+    {% if item.abstract %}<p class="mt-1 mb-1 small text-muted publication-abstract">{{ item.abstract }}</p>{% endif %}
+    {% if item.links %}
+      <p class="small pb-0 mb-0 publication-links">
+      {% for link in item.links %}
+        {% if link[1].url %}
+          <a target="{{ link[1]['target'] | default: '_blank' }}" rel="noopener noreferrer" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
+        {% else %}
+          <a target="_blank" rel="noopener noreferrer" href="{{ link[1] }}">[{{ link[0] }}]</a>
+        {% endif %}
+      {% endfor %}
+      </p>
+    {% endif %}
+  </div>
+</article>

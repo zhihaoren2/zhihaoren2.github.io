@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Based on the original MIT-licensed template https://github.com/luost26/academic-homepage -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Zhihao Ren — Civil and Construction Engineering, Intelligent Infrastructure and Artificial Intelligence.">
+    <meta name="color-scheme" content="light">
+    <title>{% if page.title == 'Homepage' %}Zhihao Ren — Researcher{% else %}{{ page.title }} — {{ site.data.profile.navbar_name }}{% endif %}</title>
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Zhihao Ren — Academic Homepage">
+    <meta property="og:title" content="{{ page.title }} — Zhihao Ren">
+    <meta property="og:description" content="Civil &amp; Construction Engineering · AI for Infrastructure and Construction">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/assets/images/social-preview.png' | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+    <!-- Original template framework and JavaScript; preserve exact template functionality. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/apple-custom.css' | relative_url }}">
+</head>
+<body class="bg-light" {{ page.body_attr }}>
+    <a class="sr-only sr-only-focusable skip-navigation" href="#main-content">Skip to content</a>
+    {% include navbar.html %}
+    <main id="main-content" class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
+        {{ content }}
+    </main>
+    {% include footer.html %}
+
+    <!-- Existing upstream scripts kept for compatibility with template widgets. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/github-buttons/2.14.2/buttons.min.js" integrity="sha512-OYwZx04hKFeFNYrWxIyo3atgGpb+cxU0ENWBZs72X7T9U+NoHPM1ftUn/Mfw7dRDXrqWA6M1wBg6z6fGE32aeA==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ '/assets/js/common.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/bubble_visual_hash.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/semantic_scholar_citation_count.js' | relative_url }}"></script>
+
+    <!-- Publication enlargement, with touch/click full-screen alternative. -->
+    <div class="publication-float-preview" id="publication-float-preview" aria-hidden="true">
+        <img id="publication-float-image" alt="">
+    </div>
+    <dialog class="publication-dialog" id="publication-dialog" aria-label="Publication figure preview">
+        <button type="button" class="preview-dialog-close" id="preview-dialog-close" aria-label="Close large image">&times;</button>
+        <img id="publication-dialog-image" alt="">
+        <p id="publication-dialog-caption"></p>
+    </dialog>
+    <script defer src="{{ '/assets/js/apple-custom.js' | relative_url }}"></script>
+</body>
+</html>

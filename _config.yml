@@ -1,0 +1,11 @@
+# Core configuration from luost26/academic-homepage, adjusted for root-domain Pages.
+url: "https://zhihaoren.com"
+baseurl: ""
+markdown: kramdown
+plugins:
+  - jekyll-email-protect
+collections:
+  - publications
+  - news
+  - showcase
+  - posts

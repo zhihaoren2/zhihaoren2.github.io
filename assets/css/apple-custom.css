@@ -1,0 +1,151 @@
+/* Apple-inspired palette and micro-interactions applied to the ORIGINAL academic-homepage Jekyll structure.
+   White background + Apple-like system type + clear blue hyperlinks. No gradients or decorative effects. */
+:root {
+  --app-white: #fff;
+  --app-text: #1d1d1f;
+  --app-muted: #6e6e73;
+  --app-blue: #0071e3;
+  --app-blue-hover: #005bb5;
+  --app-separator: #e5e5e7;
+  --app-soft: #f5f5f7;
+  --app-shadow: 0 4px 20px rgba(0,0,0,.035);
+}
+html { scroll-behavior: smooth; }
+body, body.bg-light {
+  background: var(--app-white)!important;
+  color: var(--app-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Arial, sans-serif!important;
+  font-size: 15px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+  color: var(--app-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.022em;
+}
+.text-muted, .text-secondary { color: var(--app-muted)!important; }
+a { color: var(--app-blue); text-decoration: none; transition: color .18s ease; }
+a:hover, a:focus-visible { color: var(--app-blue-hover); text-decoration: underline; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, .profile-photo-switch:focus-visible {
+  outline: 2px solid var(--app-blue); outline-offset: 3px;
+}
+.navbar {
+  background: rgba(255,255,255,.96)!important;
+  border-bottom: 1px solid var(--app-separator);
+  box-shadow: none!important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.navbar .nav-link, .navbar .navbar-brand { color: var(--app-text)!important; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: var(--app-blue)!important; }
+.card { border-radius: 10px!important; border: 1px solid var(--app-separator)!important; background: white!important; box-shadow: var(--app-shadow)!important; }
+.card-header { background: var(--app-white); border-color: var(--app-separator); }
+.badge-primary, .btn-primary { background: var(--app-blue); border-color: var(--app-blue); }
+.border-bottom { border-bottom-color: var(--app-separator)!important; }
+.bg-light, .bg-white { background: #fff!important; }
+
+/* Left column: keep the ORIGINAL sidebar proportions, alter only photos and link treatment. */
+.profile-sticky { z-index: 12; }
+.profile-card .card-body { padding-left: 20px!important; padding-right: 20px!important; }
+.profile-person-name { font-weight: 650; letter-spacing: -.04em; font-size: 1.55rem; margin-top: 8px; margin-bottom: 4px; }
+.profile-positions { font-size: 12.5px; line-height: 1.65; color: var(--app-muted); }
+.profile-email { margin: 10px 0 5px; overflow-wrap: anywhere; }
+.profile-photo-switch {
+  position: relative; isolation: isolate; margin: 0 auto 17px; display: block;
+  aspect-ratio: 6 / 6.8; width: 100%; max-width: 246px;
+  background: var(--app-soft); border: 1px solid #ececf0; overflow: hidden;
+  border-radius: 8px; cursor: default;
+}
+.profile-photo-switch > img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0; transition: opacity .38s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1);
+}
+.profile-photo-primary { z-index: 1; opacity: 1; }
+.profile-photo-alternate { z-index: 2; opacity: 0; }
+.profile-photo-hint {
+  position: absolute; left: 10px; bottom: 10px; z-index: 3;
+  background: rgba(255,255,255,.9); color: #515157; font-size: 10px; letter-spacing: .01em;
+  border-radius: 4px; padding: 3px 7px; opacity: 0; transition: opacity .25s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .profile-photo-switch:hover .profile-photo-primary, .profile-photo-switch:focus-visible .profile-photo-primary { opacity: 0; transform: scale(1.018); }
+  .profile-photo-switch:hover .profile-photo-alternate, .profile-photo-switch:focus-visible .profile-photo-alternate { opacity: 1; transform: scale(1.018); }
+  .profile-photo-switch:hover .profile-photo-hint { opacity: 1; }
+}
+.profile-social { margin: 15px auto 1px; border-top: 1px solid var(--app-separator); padding-top: 7px; }
+.profile-social a {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 7px 4px; color: var(--app-blue); font-size: 13px; font-weight: 510;
+  border-bottom: 1px solid #f1f1f2; text-decoration: none;
+}
+.profile-social a:last-child { border-bottom: none; }
+.profile-social a span { opacity: .55; transform: translateX(0); transition: transform .18s ease,opacity .18s ease; }
+.profile-social a:hover span { opacity: 1; transform: translateX(2px); }
+
+/* Original publication cards, with a much more deliberate image hierarchy. */
+.publication-apple-item { margin-left: 0; margin-right: 0; align-items: flex-start; }
+.publication-apple-item:hover { background-color: #fbfbfd; }
+.publication-thumbnail-column { min-width: 0; }
+.publication-preview-trigger {
+  position: relative; display: block; width: 100%; overflow: hidden;
+  aspect-ratio: 4/3; border: 1px solid var(--app-separator); border-radius: 5px;
+  background: #f5f5f7; cursor: zoom-in; padding: 0;
+}
+.publication-thumb { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .24s ease; }
+.publication-enlarge-icon { position:absolute;right:7px;bottom:6px;border-radius:3px;padding:1px 5px;background:rgba(255,255,255,.93);color:var(--app-blue);font-size:12px; }
+.publication-preview-trigger:hover .publication-thumb, .publication-preview-trigger:focus-visible .publication-thumb { transform: scale(1.035); }
+.publication-title { font-size: 1.06rem; color: var(--app-text); line-height: 1.4; }
+.publication-journal { color: var(--app-blue); }
+.publication-abstract { color: var(--app-muted); line-height: 1.55; }
+.publication-links a { color: var(--app-blue); font-weight: 500; margin-right: .28em; }
+.publication-float-preview {
+  position: fixed; left: 0; top: 0; width: min(540px, calc(100vw - 30px)); max-height: 74vh;
+  pointer-events: none; opacity: 0; visibility: hidden; transform: translateY(5px);
+  transition: opacity .12s ease, transform .12s ease, visibility .12s ease;
+  z-index: 10090; overflow: hidden;
+  background: #fff; border: 1px solid #e3e3e5; border-radius: 7px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.19);
+}
+.publication-float-preview.visible { opacity: 1; visibility: visible; transform: none; }
+.publication-float-preview img { width: 100%; max-height: 71vh; object-fit: contain; display: block; }
+.publication-dialog { border: 0; border-radius: 12px; padding: 20px; max-width: min(94vw, 1100px); max-height: 94vh; box-shadow: 0 24px 90px rgba(0,0,0,.24); }
+.publication-dialog::backdrop { background: rgba(0,0,0,.73); }
+.publication-dialog img { display: block; max-width: 100%; max-height: 76vh; object-fit: contain; margin: auto; }
+.publication-dialog p { max-width: 70ch; font-size: 13px; margin: 12px auto 0; color: var(--app-muted); }
+.preview-dialog-close { position: absolute; top: 5px; right: 8px; background: white; border: none; border-radius: 50%; color: #555; font-size: 29px; line-height: 1; width: 35px; height: 35px; cursor: pointer; }
+
+/* Kamsekar-inspired, minimal Name / Email / Message / Send contact form. */
+.contact-card { margin-bottom: 34px; }
+.contact-card h2 { font-size: 1.34rem; }
+.contact-introduction { font-size: 14px; max-width: 640px; color: #55565a; }
+.academic-contact-form { max-width: 660px; }
+.contact-field-group { margin-bottom: 14px; }
+.contact-field-group label { display: block; color: var(--app-text); font-size: 13px; font-weight: 550; margin-bottom: 5px; }
+.contact-field-group input, .contact-field-group textarea {
+  width: 100%; display: block; background: white; color: #1d1d1f;
+  border: 1px solid #c9c9ce; border-radius: 6px; padding: 10px 12px;
+  font-family: inherit; font-size: 14px; line-height: 1.5;
+}
+.contact-field-group input { min-height: 42px; }
+.contact-field-group textarea { resize: vertical; min-height: 132px; }
+.contact-field-group input:focus, .contact-field-group textarea:focus { outline: none; border-color: var(--app-blue); box-shadow: 0 0 0 2px rgba(0,113,227,.12); }
+.contact-form-footer { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+.academic-send-button { padding: 8px 23px; border: 1px solid var(--app-blue); color: white; background: var(--app-blue); border-radius: 6px; font-size: 14px; font-weight: 550; cursor: pointer; transition: background .18s ease; }
+.academic-send-button:hover { background: var(--app-blue-hover); }
+.contact-status { color: #55565a; font-size: 12px; margin: 0; max-width: 55ch; }
+@media (max-width: 767.98px) {
+  body { padding-top: 4.4rem; }
+  .profile-sticky { position: static!important; top: auto!important; }
+  .profile-photo-switch { max-width: 190px; }
+  .profile-card { margin-bottom: 18px; }
+  .publication-thumbnail-column { max-width: 200px; padding-bottom: 0!important; }
+  .publication-apple-item > div:last-child { padding-top: 8px!important; }
+  .publication-float-preview { display: none!important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { transition-duration: .01ms!important; animation-duration: .01ms!important; }
+}

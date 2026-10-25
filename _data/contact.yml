@@ -1,0 +1,6 @@
+# To receive web-form submissions, paste YOUR OWN Formspree endpoint, e.g.
+# formspree_endpoint: "https://formspree.io/f/your-form-id"
+# Leave this empty until the form is created and your email is verified.
+# When empty, the form opens an email client if profile.email is set.
+# Otherwise it displays a clear not-configured message; it never fakes delivery.
+formspree_endpoint: "https://formspree.io/f/xnppjkge"

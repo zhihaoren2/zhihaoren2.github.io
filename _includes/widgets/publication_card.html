@@ -1,0 +1,13 @@
+{% assign publications = include.publications %}
+<div class="card mt-4 publication-main-card">
+  <div class="card-body px-4 pt-4 pb-2">
+    <h2 class="h4 mb-2">Selected Publications <a class="small" href="{{ '/publications' | relative_url }}" aria-label="View all publications">(view all &rarr;)</a></h2>
+    {% if publications.size > 0 %}
+      {% for item in publications limit:include.limit %}
+        {% include widgets/publication_item.html item=item first=false last=false %}
+      {% endfor %}
+    {% else %}
+      <p class="text-muted small py-2">The selected publication list is being updated.</p>
+    {% endif %}
+  </div>
+</div>
