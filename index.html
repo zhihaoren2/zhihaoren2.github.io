@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Academic homepage of Zhihao Ren." />
+  <title>Zhihao Ren | Academic Homepage</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #202124;
+      --muted: #666b73;
+      --line: #e5e7eb;
+      --accent: #1f5f8b;
+      --max: 920px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 56px 24px 72px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 34px; font-weight: 700; color: white;
+      background: linear-gradient(135deg, #1f5f8b, #77a8c7);
+      letter-spacing: 1px;
+    }
+    h1 { font-size: 38px; margin: 0 0 6px; line-height: 1.15; }
+    .subtitle { font-size: 18px; color: var(--muted); margin-bottom: 10px; }
+    .links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 15px; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px 26px;
+      margin: 18px 0;
+    }
+    h2 { margin: 0 0 14px; font-size: 23px; }
+    ul { margin: 8px 0 0 20px; padding: 0; }
+    li { margin: 7px 0; }
+    .pub { margin-bottom: 14px; }
+    .pub:last-child { margin-bottom: 0; }
+    .pub-title { font-weight: 650; }
+    .small { color: var(--muted); font-size: 14px; }
+    footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+
+    @media (max-width: 620px) {
+      .wrap { padding: 34px 18px 52px; }
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .avatar { margin: 0 auto; }
+      .links { justify-content: center; }
+      h1 { font-size: 32px; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="hero">
+      <div class="avatar">ZR</div>
+      <div>
+        <h1>Zhihao Ren</h1>
+        <div class="subtitle">Civil & Construction Engineering · AI for Infrastructure</div>
+        <div class="links">
+          <a href="#" target="_blank">Google Scholar</a>
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="#" target="_blank">ORCID</a>
+          <a href="mailto:YOUR_EMAIL@example.com">Email</a>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>About</h2>
+      <p>
+        I am a researcher in civil and construction engineering, with research interests
+        at the intersection of artificial intelligence, infrastructure management,
+        construction automation, and data-driven decision making.
+      </p>
+      <p>
+        My work focuses on developing practical and interpretable computational methods
+        for infrastructure condition assessment, failure prediction, and intelligent
+        construction and asset management.
+      </p>
+    </section>
+
+    <section>
+      <h2>Research Interests</h2>
+      <ul>
+        <li>AI and machine learning for infrastructure and construction</li>
+        <li>Infrastructure condition assessment and failure prediction</li>
+        <li>Construction automation and intelligent project management</li>
+        <li>Computer vision and data-driven asset management</li>
+        <li>Explainable and probabilistic AI for engineering applications</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Selected Publications</h2>
+      <div class="pub">
+        <div class="pub-title">Your selected publication title</div>
+        <div class="small">Z. Ren, Co-authors · Journal Name · Year</div>
+      </div>
+      <div class="pub">
+        <div class="pub-title">Your selected publication title</div>
+        <div class="small">Z. Ren, Co-authors · Journal Name · Year</div>
+      </div>
+      <div class="pub">
+        <div class="pub-title">Your selected publication title</div>
+        <div class="small">Z. Ren, Co-authors · Journal Name · Year</div>
+      </div>
+      <p class="small">Full publication list: add your Google Scholar link above.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        For research collaboration, academic discussion, or professional enquiries,
+        please contact me by email or LinkedIn.
+      </p>
+    </section>
+
+    <footer>© 2026 Zhihao Ren · Hosted on GitHub Pages</footer>
+  </main>
+</body>
+</html>
