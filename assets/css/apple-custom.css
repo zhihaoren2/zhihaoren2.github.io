@@ -149,3 +149,96 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   html { scroll-behavior: auto; }
   *,*::before,*::after { transition-duration: .01ms!important; animation-duration: .01ms!important; }
 }
+
+/* ZR-CV-UPDATE-2026 BEGIN: icon-only social navigation */
+.profile-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 15px auto 1px;
+  padding-top: 12px;
+  border-top: 1px solid var(--app-separator);
+}
+.profile-social a, .profile-social a:last-child {
+  display: inline-flex;
+  flex: 0 0 32px;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  color: var(--app-blue);
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color .2s ease,transform .2s ease;
+}
+.profile-social a i {font-size: 20px;line-height:1}
+.profile-social a:hover, .profile-social a:focus-visible {
+  background: #f0f7ff;
+  color: var(--app-blue-hover);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+/* ZR-CV-UPDATE-2026 END */
+
+/* ZR-NAVBAR-IMAGE-2026 BEGIN */
+.navbar .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+}
+.navbar .zr-navbar-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 30px;
+  max-width: 150px;
+  object-fit: contain;
+}
+@media (max-width: 575.98px) {
+  .navbar .zr-navbar-logo { max-height: 28px; max-width: 120px; }
+}
+/* ZR-NAVBAR-IMAGE-2026 END */
+
+/* Profile position with university logo */
+.profile-position-entry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.profile-position-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.profile-position-text {
+    min-width: 0;
+    text-align: left;
+}
+
+.profile-position-title {
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    color: #1d1d1f;
+    line-height: 1.5;
+}
+
+.profile-position-department {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6e6e73;
+    line-height: 1.5;
+    margin-top: 2px;
+}

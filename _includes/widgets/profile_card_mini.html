@@ -13,24 +13,65 @@
         </figure>
         {% endif %}
         <div class="text-center h4 profile-person-name">{{ site.data.profile.primary_name }}</div>
-        <div class="text-center small text-profile-position profile-positions">
-          {% for position in site.data.profile.positions %}<div>{{ position.name }}</div>{% endfor %}
+        <div class="profile-positions">
+
+            {% for position in site.data.profile.positions %}
+
+            <div class="profile-position-entry">
+
+                {% if position.logo %}
+                <img src="{{ position.logo | relative_url }}"
+                     alt=""
+                     class="profile-position-logo">
+                {% endif %}
+
+                <div class="profile-position-text">
+
+                    <div class="profile-position-title">
+                        {{ position.name }}
+                    </div>
+
+                    {% if position.department %}
+                    <div class="profile-position-department">
+                        {{ position.department }}
+                    </div>
+                    {% endif %}
+
+                    {% if position.institution %}
+                    <div class="profile-position-department">
+                        {{ position.institution }}
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
         </div>
-        {% if site.data.profile.email and site.data.profile.email != '' %}
-        <p class="text-center small profile-email"><a href="mailto:{{ site.data.profile.email }}">{{ site.data.profile.email }}</a></p>
-        {% endif %}
         <nav class="profile-social" aria-label="Academic profiles">
-          {% if site.data.profile.cv_link %}<a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span></a>{% endif %}
-          {% if site.data.profile.gscholar %}
-            {% assign gscholar_url = site.data.profile.gscholar %}
-            {% unless gscholar_url contains 'scholar.google' %}{% assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: gscholar_url %}{% endunless %}
-            <a href="{{ gscholar_url }}" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
-          {% endif %}
-          {% if site.data.profile.orcid %}<a href="https://orcid.org/{{ site.data.profile.orcid }}" target="_blank" rel="noopener noreferrer">ORCID <span aria-hidden="true">↗</span></a>{% endif %}
-          {% if site.data.profile.linkedin %}<a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
-          {% if site.data.profile.github %}<a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>{% endif %}
-          {% if site.data.profile.email and site.data.profile.email != '' %}<a href="mailto:{{ site.data.profile.email }}">Email <span aria-hidden="true">↗</span></a>{% endif %}
-        </nav>
+  {% if site.data.profile.cv_link %}
+  <a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" rel="noopener noreferrer" title="CV" aria-label="Curriculum Vitae"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.gscholar %}
+    {% assign gscholar_url = site.data.profile.gscholar %}
+    {% unless gscholar_url contains 'scholar.google' %}{% assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: gscholar_url %}{% endunless %}
+  <a href="{{ gscholar_url }}" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.orcid %}
+  <a href="https://orcid.org/{{ site.data.profile.orcid }}" target="_blank" rel="noopener noreferrer" title="ORCID" aria-label="ORCID"><i class="ai ai-orcid" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.linkedin %}
+  <a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.github %}
+  <a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.email and site.data.profile.email != '' %}
+  <a href="mailto:{{ site.data.profile.email }}" title="Email" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  {% endif %}
+</nav>
       </div>
     </div>
   </div>

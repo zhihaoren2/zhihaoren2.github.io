@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_data"
+    "\\assets",
+    "\\assets\\images",
+    "\\assets\\images\\publications",
+    "\\_includes\\widgets",
+    "\\_publications",
+    "\\_publications\\2023",
+    "\\_publications\\2024",
+    "\\_publications\\2025",
+    "\\_publications\\2026"
   ],
-  "SelectedNode": "\\_data\\profile.yml",
+  "SelectedNode": "\\assets\\images\\publications\\ITCM.jpg",
   "PreviewInSolutionExplorer": false
 }
