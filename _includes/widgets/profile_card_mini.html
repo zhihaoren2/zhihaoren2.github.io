@@ -4,12 +4,11 @@
     <div class="card border-0 shadow-sm bg-white profile-card">
       <div class="card-body px-4 pt-4 pb-3">
         {% if site.data.profile.portrait_url %}
-        <figure class="profile-photo-switch" tabindex="0" aria-label="Photograph of {{ site.data.profile.primary_name }}. Hover to view a second photograph.">
+        <figure class="profile-photo-switch" tabindex="0" aria-label="Photograph of {{ site.data.profile.primary_name }}. Two profile photographs.">
           <img class="profile-photo-primary" src="{{ site.data.profile.portrait_url | relative_url }}" alt="{{ site.data.profile.primary_name }} — profile portrait" width="600" height="680" fetchpriority="high">
           {% if site.data.profile.portrait_hover_url %}
           <img class="profile-photo-alternate" src="{{ site.data.profile.portrait_hover_url | relative_url }}" alt="" width="600" height="680" aria-hidden="true">
           {% endif %}
-          <span class="profile-photo-hint" aria-hidden="true">Hover to switch photo</span>
         </figure>
         {% endif %}
         <div class="text-center h4 profile-person-name">{{ site.data.profile.primary_name }}</div>

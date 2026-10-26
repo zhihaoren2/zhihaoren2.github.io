@@ -242,3 +242,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     line-height: 1.5;
     margin-top: 2px;
 }
+
+/* ZR-HOMEPAGE-NEWS-UPDATE-2026 BEGIN */
+.navbar .zr-navbar-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 40px;
+  max-width: 170px;
+  object-fit: contain;
+}
+@media (max-width: 575.98px) {
+  .navbar .zr-navbar-logo { max-height: 32px; max-width: 120px; }
+}
+.zr-heading-emoji {
+  display: inline-block;
+  margin-right: .35em;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: -.06em;
+}
+.profile-photo-switch > img.profile-photo-alternate {
+  object-fit: contain;
+  object-position: center center;
+  transform: none !important;
+}
+.profile-photo-switch:hover > img.profile-photo-alternate,
+.profile-photo-switch:focus-visible > img.profile-photo-alternate {
+  transform: none !important;
+}
+.profile-photo-hint { display: none !important; }
+/* ZR-HOMEPAGE-NEWS-UPDATE-2026 END */

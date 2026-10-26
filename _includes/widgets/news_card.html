@@ -10,8 +10,10 @@
             <div class="media-body">
                 {% for item in year.items %}
                 <div class="my-1 d-flex">
-                    <div>{{ item.title }}</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                    <div>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
+                    {% unless item.date_precision == 'year' %}
+                    <div class="ml-auto mt-auto text-muted no-break"><i>{% if item.date_precision == 'month' %}{{ item.date | date: "%b" }}{% else %}{{ item.date | date: "%b %d" }}{% endif %}</i></div>
+                    {% endunless %}
                 </div>
                 {% endfor %}
             </div>
