@@ -120,3 +120,45 @@ body { padding-top: 6rem; }
 @media (prefers-reduced-motion: reduce) {
   .zr-portrait-float { transition: none; }
 }
+
+/* ZR-COMPACT-LAYOUT-2026 BEGIN: homepage columns and inline-only portrait */
+/* Desktop width: sidebar 28.5%, content 71.5% */
+@media (min-width: 992px) {
+  .zr-home-grid > .zr-home-sidebar {
+    flex: 0 0 28.5% !important;
+    max-width: 28.5% !important;
+  }
+  .zr-home-grid > .zr-home-main {
+    flex: 0 0 71.5% !important;
+    max-width: 71.5% !important;
+  }
+  /* Education and Experience stay next to each other within the right content card. */
+  .zr-career-card .zr-education-column {
+    flex: 0 0 41.7% !important;
+    width: 41.7% !important;
+    max-width: 41.7% !important;
+  }
+  .zr-career-card .zr-experience-column {
+    flex: 0 0 58.3% !important;
+    width: 58.3% !important;
+    max-width: 58.3% !important;
+  }
+}
+.zr-career-card .zr-education-column,
+.zr-career-card .zr-experience-column,
+.zr-career-card .media,
+.zr-career-card .media-body { min-width: 0; }
+.zr-career-card .media-body { overflow-wrap: break-word; }
+
+/* Keep the existing photo switch; show the SECOND photo in full, in the SAME frame. */
+.profile-photo-switch > img.profile-photo-alternate,
+.profile-photo-switch:hover > img.profile-photo-alternate,
+.profile-photo-switch:focus-visible > img.profile-photo-alternate {
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+}
+.profile-photo-hint { display: none !important; }
+/* Defensive hiding for a stale floating layer if an old JS asset remains cached. */
+.zr-portrait-float, .zr-portrait-float.zr-visible { display: none !important; }
+/* ZR-COMPACT-LAYOUT-2026 END */
