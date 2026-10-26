@@ -1,0 +1,122 @@
+/* Zhihao Ren - single-purpose layout repair, 2026-10-26.
+   Loaded AFTER apple-custom.css, so it wins without editing old CV/news/publishing styles. */
+:root {
+  --zr-nav-logo-height: 70px;
+  --zr-nav-logo-max-width: 245px;
+}
+
+/* Navbar: grow its *visible* image and give the fixed bar enough breathing room. */
+.navbar.navbar-expand-sm {
+  min-height: 76px;
+}
+.navbar .navbar-brand {
+  min-width: 0;
+  margin-right: 14px;
+}
+.navbar .zr-navbar-logo {
+  display: block !important;
+  height: var(--zr-nav-logo-height) !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: min(var(--zr-nav-logo-max-width), 40vw) !important;
+  object-fit: contain !important;
+}
+body { padding-top: 6rem; }
+.profile-sticky { top: 96px !important; }
+
+/* Active link: the upstream code adds 'active' on li.nav-item, not on a.nav-link. */
+.navbar .nav-item.active > .nav-link,
+.navbar .nav-item.zr-current > .nav-link,
+.navbar .nav-link[aria-current="page"] {
+  color: #0071e3 !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+.navbar .nav-item:not(.active):not(.zr-current) > .nav-link:hover { color: #005bb5 !important; }
+
+/* Left mini-profile: additional internal room after widening the Bootstrap column. */
+.profile-card .card-body {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+.profile-position-entry { justify-content: flex-start; }
+.profile-position-text { min-width: 0; overflow-wrap: normal; }
+
+/* Education + Experience + Awards headings: one consistent hierarchy. */
+.zr-career-card h6 {
+  font-size: 18px !important;
+  line-height: 1.35;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.zr-career-card .zr-heading-emoji { font-size: 1em; vertical-align: baseline; }
+
+/* Both education and experience logo badges are 36 x 36 px; never stretched. */
+.zr-career-card .zr-education-column .media > img,
+.zr-career-card .zr-experience-column .media > img {
+  display: block;
+  width: 36px !important;
+  height: 36px !important;
+  flex: 0 0 36px;
+  object-fit: contain !important;
+  margin-right: 10px !important;
+}
+.zr-career-card .media-body { min-width: 0; }
+.zr-career-card .media-body .d-flex { gap: 6px; }
+
+/* Inline avatar stays where it was, but the alternate can no longer be cropped
+   by object-fit: cover. The FULL-SIZE preview is a separate body-level layer. */
+.profile-photo-switch > img.profile-photo-alternate,
+.profile-photo-switch:hover > img.profile-photo-alternate,
+.profile-photo-switch:focus-visible > img.profile-photo-alternate {
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+.profile-photo-hint { display: none !important; }
+.zr-portrait-float {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20000;
+  background: #ffffff;
+  border: 1px solid #e5e5e7;
+  border-radius: 10px;
+  box-shadow: 0 18px 70px rgba(0,0,0,.22);
+  padding: 7px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, visibility .15s ease;
+  box-sizing: border-box;
+}
+.zr-portrait-float.zr-visible { opacity: 1; visibility: visible; }
+.zr-portrait-float img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+@media (max-width: 991.98px) {
+  .zr-career-card .zr-education-column,
+  .zr-career-card .zr-experience-column { margin-bottom: 10px; }
+}
+@media (max-width: 767.98px) {
+  .profile-sticky { top: auto !important; }
+  body { padding-top: 5.4rem; }
+  .zr-portrait-float { display: none !important; }
+}
+@media (max-width: 575.98px) {
+  .navbar.navbar-expand-sm { min-height: 66px; }
+  .navbar .zr-navbar-logo {
+    height: 34px !important;
+    max-width: min(210px, 48vw) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zr-portrait-float { transition: none; }
+}
