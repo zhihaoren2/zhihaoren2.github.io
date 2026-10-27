@@ -10,4 +10,6 @@ authors:
   - "J. Xing"
   - "Z. Ren"
   - "Z. Zou"
+links:
+  DOI: "https://doi.org/10.1016/j.autcon.2026.106928"
 ---

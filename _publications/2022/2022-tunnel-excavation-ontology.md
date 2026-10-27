@@ -8,4 +8,6 @@ authors:
   - "S. Yang"
   - "Z. Ren"
   - "J. I. Kim"
+links:
+  DOI: "https://doi.org/10.6106/ICCEPM.2022.0222"
 ---

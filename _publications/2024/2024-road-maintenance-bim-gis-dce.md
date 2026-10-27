@@ -11,4 +11,6 @@ authors:
   - "J. I. Kim"
   - "L. Ma"
   - "L. Huang"
+links:
+  DOI: "https://doi.org/10.6106/ICCEPM.2024.0807"
 ---

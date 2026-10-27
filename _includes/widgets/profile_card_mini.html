@@ -11,8 +11,9 @@
           {% endif %}
         </figure>
         {% endif %}
-        <div class="text-center h4 profile-person-name">{{ site.data.profile.primary_name }}</div>
-        <div class="profile-positions">
+        <div class="profile-identity">
+          <div class="h4 profile-person-name">{{ site.data.profile.primary_name }}</div>
+          <div class="profile-positions">
 
             {% for position in site.data.profile.positions %}
 
@@ -42,21 +43,23 @@
                     </div>
                     {% endif %}
 
+                    {% if forloop.last and site.data.profile.email and site.data.profile.email != '' %}
+                    {% assign profile_email_parts = site.data.profile.email | split: '@' %}
+                    <div class="profile-email">
+                      <a class="profile-email-link" href="#" data-email-user="{{ profile_email_parts[0] | escape }}" data-email-domain="{{ profile_email_parts[1] | escape }}" aria-label="Email {{ site.data.profile.primary_name }}">
+                        <span>{{ profile_email_parts[0] }}</span> <span aria-hidden="true">(at)</span> <span>{{ profile_email_parts[1] }}</span>
+                      </a>
+                    </div>
+                    {% endif %}
+
                 </div>
 
             </div>
 
             {% endfor %}
 
+          </div>
         </div>
-        {% if site.data.profile.email and site.data.profile.email != '' %}
-        {% assign profile_email_parts = site.data.profile.email | split: '@' %}
-        <div class="profile-email">
-          <a class="profile-email-link" href="#" data-email-user="{{ profile_email_parts[0] | escape }}" data-email-domain="{{ profile_email_parts[1] | escape }}" aria-label="Email {{ site.data.profile.primary_name }}">
-            <span>{{ profile_email_parts[0] }}</span> <span aria-hidden="true">(at)</span> <span>{{ profile_email_parts[1] }}</span>
-          </a>
-        </div>
-        {% endif %}
         <nav class="profile-social" aria-label="Academic profiles">
   {% if site.data.profile.cv_link %}
   <a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" rel="noopener noreferrer" title="CV" aria-label="Curriculum Vitae"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>

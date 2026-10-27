@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\assets",
+    "\\assets\\css",
     "\\assets\\images",
-    "\\assets\\images\\publications",
+    "\\assets\\js",
+    "\\_data",
     "\\_includes\\widgets",
     "\\_publications",
-    "\\_publications\\2023",
-    "\\_publications\\2024",
-    "\\_publications\\2025",
+    "\\_publications\\2022",
     "\\_publications\\2026"
   ],
-  "SelectedNode": "\\assets\\images\\publications\\ITCM.jpg",
+  "SelectedNode": "\\_publications\\2026\\2026-smart-auxiliary-ventilation.md",
   "PreviewInSolutionExplorer": false
 }

@@ -4,7 +4,7 @@ secondary_name: "任智浩"
 navbar_name: "Zhihao Ren"
 positions:
   - name: "Postdoctoral Fellow"
-    department: "Department of Building Science"
+    department: "Dept. of Building Science"
     institution: "Tsinghua University"
     logo: "/assets/images/badges/tsinghua.svg"
 email: "z.ren@my.cityu.edu.hk"
@@ -19,8 +19,9 @@ wechat_qr: "/assets/images/photos/wechat-qr.jpg"
 twitter: null
 short_bio_text_justify: false
 short_bio: >-
-  <p>I am a postdoctoral researcher at Tsinghua University working at the intersection of civil and construction engineering, intelligent built environments, and artificial intelligence. I earned my Ph.D. in Architecture and Civil Engineering from City University of Hong Kong in June 2026.</p>
-  <p>My research combines computer vision, machine learning, building performance simulation (EnergyPlus and CFD), and data-driven decision-making. My work spans occupant-centric comfort and HVAC control, intelligent ventilation, construction robotics, and AI-assisted infrastructure condition assessment.</p>
+  <p>👋 Hi, I’m Zhihao Ren (任智浩), a postdoctoral researcher at Tsinghua University. My research explores the relationships among people, buildings, and infrastructure, with a focus on sustainable built environments, occupant-centric control (OCC), and virtual design and construction (VDC).</p>
+  <p>🚧 I am currently expanding my research into construction/infrastructure management, focusing on intelligent, efficient project delivery and built asset performance.</p>
+  <p>I earned my PhD (2026) and MSc (2021) from City University of Hong Kong, where I worked with Prof. Jung In Kim and Prof. Xin Li at the <a href="http://liimvdc.com/" target="_blank" rel="noopener noreferrer">Laboratory for Integrated Infrastructure Management (LIIM)</a>. I received my BEng from Chongqing University in 2017. I previously worked as a civil engineer at China State Construction Engineering Corporation (CSCEC).</p>
 
 portrait_url: /assets/images/photos/profile-primary.jpg
 portrait_hover_url: /assets/images/photos/profile-secondary.jpg
@@ -48,15 +49,15 @@ experience:
     logo: "/assets/images/badges/tsinghua.svg"
     dept: "Department of Building Science"
     position: "Postdoctoral Fellow"
-    date: "Present"
+    date: "Aug 2026–Present"
   - name: "City University of Hong Kong"
     logo: "/assets/images/badges/cityuhk.svg"
     dept: "Department of Architecture and Civil Engineering"
     position: "Research Assistant (Full-time / Part-time)"
     date: "2021–2026"
-  - name: "China State Construction Engineering Corporation (CSCEC)"
+  - name: "China State Construction Engineering Corporation"
     logo: "/assets/images/badges/cscec.svg"
-    dept: "Construction site engineering and BIM-based quantity surveying"
+    dept: "Construction projects in Shanghai and Canton"
     position: "On-Site Civil Engineer"
     date: "2017–2019"
 
@@ -65,11 +66,11 @@ awards:
     date: "2025"
   - name: "Runner-Up Award — ICCEPM, Hokkaido, Japan"
     date: "2024"
-  - name: "Grand Award, Professional Research Category — Hong Kong openBIM/openGIS Award"
+  - name: "Grand Award, Professional Research Category — Hong Kong openBIM/openGIS Award, Hong Kong"
     date: "2023"
   - name: "Merit Certificate — Teaching Students: First Steps (SG8001), City University of Hong Kong"
     date: "2023"
-  - name: "Best Technical Paper Award — SBE22 Seoul (CIB)"
+  - name: "Best Technical Paper Award — SBE22 Seoul (CIB), Seoul, South Korea"
     date: "2022"
   - name: "Distinction Award — M.Sc. in Civil and Architectural Engineering, City University of Hong Kong"
     date: "2021"

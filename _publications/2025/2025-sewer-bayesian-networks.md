@@ -9,4 +9,6 @@ authors:
   - "T. Zayed"
   - "J. Xing"
   - "Z. Ren"
+links:
+  DOI: "https://doi.org/10.1016/j.ress.2025.111243"
 ---

@@ -8,4 +8,6 @@ authors:
   - "S. Li"
   - "Z. Ren"
   - "J. I. Kim"
+links:
+  DOI: "https://doi.org/10.1016/j.kscej.2025.100408"
 ---

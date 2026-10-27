@@ -5,7 +5,7 @@ pages:
     url: /publications
   - name: News
     url: /news
-  - name: Academic Activities
-    url: /activities
+  - name: Engagement
+    url: /engagement
   - name: Contact
     url: /#contact

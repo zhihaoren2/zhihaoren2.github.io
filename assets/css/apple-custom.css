@@ -77,10 +77,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 #navbar-year { top: calc(var(--navbar-height) + 16px); }
 .profile-sticky { z-index: 12; }
 .profile-card .card-body { padding-left: 20px!important; padding-right: 20px!important; }
-.profile-person-name { font-weight: 650; letter-spacing: -.04em; font-size: 1.55rem; margin-top: 8px; margin-bottom: 4px; }
-.profile-positions { font-size: 12.5px; line-height: 1.65; color: var(--app-muted); }
-.profile-email { margin: 12px 0 2px; overflow-wrap: anywhere; text-align: center; font-size: 12.5px; }
+.profile-identity { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 10px; }
+.profile-person-name { grid-column: 2; text-align: left; font-weight: 650; letter-spacing: -.04em; font-size: 1.55rem; margin-top: 8px; margin-bottom: 4px; }
+.profile-positions { grid-column: 1 / -1; font-size: 15px; line-height: 1.7; color: var(--app-text); }
+.profile-email { margin: 12px 0 2px; overflow-wrap: anywhere; text-align: left; font-size: 15px; line-height: 1.7; }
 .profile-email a { color: var(--app-blue); }
+.text-profile-bio p:first-child { margin-bottom: .35rem; }
 .profile-photo-switch {
   position: relative; isolation: isolate; margin: 0 auto 17px; display: block;
   aspect-ratio: 6 / 6.8; width: 100%; max-width: 246px;
@@ -105,10 +107,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .profile-social {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex-wrap: nowrap;
+  gap: 0;
   margin: 12px auto 1px;
   padding-top: 10px;
   border-top: 1px solid var(--app-separator);
@@ -141,7 +143,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   text-decoration: none;
   transform: translateY(-2px);
 }
-.profile-social i { font-size: 20px; line-height: 1; }
+.profile-social i { font-size: 30px; line-height: 1; }
 .wechat-profile { position: relative; display: inline-flex; }
 .wechat-popover {
   position: absolute;
@@ -189,6 +191,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin-right: 10px;
   object-fit: contain;
 }
+.zr-career-grid > .zr-experience-column,
+.zr-career-grid > .zr-awards-column {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--app-separator);
+}
 .profile-photo-switch > .profile-photo-alternate,
 .profile-photo-switch:hover > .profile-photo-alternate,
 .profile-photo-switch:focus-visible > .profile-photo-alternate {
@@ -212,9 +220,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .publication-enlarge-icon { position:absolute;right:7px;bottom:6px;border-radius:3px;padding:1px 5px;background:rgba(255,255,255,.93);color:var(--app-blue);font-size:12px; }
 .publication-preview-trigger:hover .publication-thumb, .publication-preview-trigger:focus-visible .publication-thumb { transform: scale(1.035); }
 .publication-title { font-size: 1.06rem; color: var(--app-text); line-height: 1.4; }
-.publication-journal { color: var(--app-blue); }
+.publication-journal { color: var(--app-text); }
+.publication-award { color: var(--app-text); font-weight: 600; }
 .publication-abstract { color: var(--app-muted); line-height: 1.55; }
 .publication-links a { color: var(--app-blue); font-weight: 500; margin-right: .28em; }
+.publication-doi-link { display: inline-flex; align-items: center; gap: .34em; margin-left: .45em; font-style: normal; }
+.publication-doi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 1em;
+  color: transparent;
+  font-size: 1em;
+  -webkit-text-stroke: .55px var(--app-blue);
+  paint-order: stroke fill;
+}
 .publication-float-preview {
   position: fixed; left: 0; top: 0; width: min(540px, calc(100vw - 30px)); max-height: 74vh;
   pointer-events: none; opacity: 0; visibility: hidden; transform: translateY(5px);
@@ -241,6 +263,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .activity-title { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.45; letter-spacing: -.01em; }
 .activity-meta { margin: 3px 0 0; color: var(--app-muted); font-size: 13px; line-height: 1.55; }
 .activity-award { color: var(--app-blue); font-weight: 550; }
+
+/* News entries begin with a consistent date column instead of an icon. */
+.news-item-line { display: flex; align-items: flex-start; gap: 14px; }
+.news-item-date { flex: 0 0 78px; font-size: 13px; line-height: 1.7; }
 
 /* Kamsekar-inspired, minimal Name / Email / Message / Send contact form. */
 .contact-card { margin-bottom: 34px; }
@@ -274,16 +300,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .navbar .zr-navbar-logo { width: 120px; max-width: 38vw; }
   .wechat-popover { width: min(190px, calc(100vw - 24px)); }
   .activity-item { grid-template-columns: 1fr; gap: 3px; padding: 14px 0; }
+  .news-item-line { display: block; }
+  .news-item-date { display: block; margin-bottom: 3px; }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
   .navbar .navbar-brand { flex: 0 0 calc(33.333333% - 20px); max-width: calc(33.333333% - 20px); }
+  .zr-page-content { padding-left: 35px; }
 }
 @media (min-width: 992px) {
   .zr-home-grid > .zr-home-sidebar { flex: 0 0 28.5%; max-width: 28.5%; }
   .zr-home-grid > .zr-home-main { flex: 0 0 71.5%; max-width: 71.5%; }
   .navbar .navbar-brand { flex: 0 0 calc(28.5% - 20px); max-width: calc(28.5% - 20px); }
+  .zr-page-content { padding-left: 35px; }
   .zr-career-grid > .zr-education-column { flex-basis: 42%; max-width: 42%; }
-  .zr-career-grid > .zr-experience-column { flex-basis: 58%; max-width: 58%; }
+  .zr-career-grid > .zr-experience-column {
+    flex-basis: 58%;
+    max-width: 58%;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    border-left: 1px solid var(--app-separator);
+  }
+}
+@media (min-width: 1200px) {
+  .zr-page-content { padding-left: 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -292,9 +332,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Profile position with university logo */
 .profile-position-entry {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    grid-column: 1 / -1;
+    align-items: flex-start;
     gap: 10px;
     margin-top: 10px;
 }
@@ -304,6 +345,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     height: 40px;
     object-fit: contain;
     flex-shrink: 0;
+    margin-top: 4px;
 }
 
 .profile-position-text {
@@ -312,17 +354,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .profile-position-title {
-    font-size: 13px;
+    font-size: inherit;
     font-style: italic;
     font-weight: 400;
     color: #1d1d1f;
-    line-height: 1.5;
+    line-height: inherit;
 }
 
 .profile-position-department {
-    font-size: 12px;
+    font-size: inherit;
     font-weight: 400;
-    color: #6e6e73;
-    line-height: 1.5;
+    color: #1d1d1f;
+    line-height: inherit;
     margin-top: 2px;
 }

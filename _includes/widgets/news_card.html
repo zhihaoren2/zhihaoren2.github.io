@@ -11,14 +11,13 @@
         {% else %}
         <div class="col p-3">
         {% endif %}
-            <div class="d-flex align-items-start">
-                <span class="mr-2" aria-hidden="true">&#x1F4F0;</span>
+            <div class="news-item-line">
+                <time class="news-item-date text-muted no-break" datetime="{{ item.date | date: '%Y-%m-%d' }}">
+                    {% if item.date_precision == 'year' %}{{ item.date | date: "%Y" }}{% elsif item.date_precision == 'month' %}{{ item.date | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %d, %Y" }}{% endif %}
+                </time>
                 <h5 class="mt-0 mb-0 font-weight-normal publication-title flex-grow-1">
                     {% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}
                 </h5>
-                {% unless item.date_precision == 'year' %}
-                <time class="ml-3 text-muted no-break" datetime="{{ item.date | date: '%Y-%m-%d' }}"><i>{% if item.date_precision == 'month' %}{{ item.date | date: "%b" }}{% else %}{{ item.date | date: "%b %d" }}{% endif %}</i></time>
-                {% endunless %}
             </div>
         </div>
         {% if item.cover %}
