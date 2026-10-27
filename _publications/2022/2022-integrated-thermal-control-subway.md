@@ -5,8 +5,6 @@ selected: true
 pub: "Sustainable Built Environment (SBE), Seoul, South Korea · Best Technical Paper Award"
 pub_date: "2022"
 authors:
-  - "Zhihao Ren"
+  - "Z. Ren"
   - "et al."
-cover: "/assets/images/publications/cv-text-covers/2022-integrated-thermal-control-subway-small.svg"
-preview: "/assets/images/publications/cv-text-covers/2022-integrated-thermal-control-subway-large.svg"
 ---

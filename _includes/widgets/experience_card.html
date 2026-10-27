@@ -2,9 +2,9 @@
     <div class="col">
         <div class="card border-0 shadow-sm bg-white zr-career-card">
             <div class="card-body p-4">
-                <div class="row" data-masonry='{"percentPosition": true }'>
+                <div class="row zr-career-grid">
                     {% if site.data.profile.education.size > 0 %}
-                    <div class="zr-education-column col-lg-5">
+                    <div class="zr-education-column">
                         <div class="mx-2 my-1">
                             <h6><span class="zr-heading-emoji" aria-hidden="true">&#x1F393;</span> Education</h6>
                             <ul class="list-unstyled mb-1">
@@ -27,7 +27,7 @@
                     {% endif %}
 
                     {% if site.data.profile.experience.size > 0 %}
-                    <div class="zr-experience-column col-lg-7">
+                    <div class="zr-experience-column">
                         <div class="mx-2 my-1">
                             <h6><span class="zr-heading-emoji" aria-hidden="true">&#x1F4BC;</span> Experience</h6>
                             <ul class="list-unstyled mb-1">

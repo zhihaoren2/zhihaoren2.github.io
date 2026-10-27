@@ -1,5 +1,5 @@
 <!-- The original project's left-hand sticky academic profile, with a two-photo hover. -->
-<aside class="row sticky-top profile-sticky" style="top: 80px" aria-label="Researcher information">
+<aside class="row sticky-top profile-sticky" aria-label="Researcher information">
   <div class="col">
     <div class="card border-0 shadow-sm bg-white profile-card">
       <div class="card-body px-4 pt-4 pb-3">
@@ -49,6 +49,14 @@
             {% endfor %}
 
         </div>
+        {% if site.data.profile.email and site.data.profile.email != '' %}
+        {% assign profile_email_parts = site.data.profile.email | split: '@' %}
+        <div class="profile-email">
+          <a class="profile-email-link" href="#" data-email-user="{{ profile_email_parts[0] | escape }}" data-email-domain="{{ profile_email_parts[1] | escape }}" aria-label="Email {{ site.data.profile.primary_name }}">
+            <span>{{ profile_email_parts[0] }}</span> <span aria-hidden="true">(at)</span> <span>{{ profile_email_parts[1] }}</span>
+          </a>
+        </div>
+        {% endif %}
         <nav class="profile-social" aria-label="Academic profiles">
   {% if site.data.profile.cv_link %}
   <a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" rel="noopener noreferrer" title="CV" aria-label="Curriculum Vitae"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></a>
@@ -64,11 +72,24 @@
   {% if site.data.profile.linkedin %}
   <a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
   {% endif %}
-  {% if site.data.profile.github %}
-  <a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+  {% if site.data.profile.instagram %}
+    {% assign instagram_url = site.data.profile.instagram %}
+    {% unless instagram_url contains '://' %}{% assign instagram_url = 'https://www.instagram.com/' | append: instagram_url %}{% endunless %}
+  <a href="{{ instagram_url }}" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+  {% endif %}
+  {% if site.data.profile.wechat_qr %}
+  <span class="wechat-profile">
+    <button class="wechat-trigger" type="button" title="WeChat" aria-label="Show WeChat QR code" aria-expanded="false">
+      <i class="fa-brands fa-weixin" aria-hidden="true"></i>
+    </button>
+    <span class="wechat-popover" role="tooltip" aria-hidden="true">
+      <img src="{{ site.data.profile.wechat_qr | relative_url }}" alt="WeChat QR code">
+    </span>
+  </span>
   {% endif %}
   {% if site.data.profile.email and site.data.profile.email != '' %}
-  <a href="mailto:{{ site.data.profile.email }}" title="Email" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+    {% assign social_email_parts = site.data.profile.email | split: '@' %}
+  <a class="profile-email-link" href="#" data-email-user="{{ social_email_parts[0] | escape }}" data-email-domain="{{ social_email_parts[1] | escape }}" title="Email" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
   {% endif %}
 </nav>
       </div>

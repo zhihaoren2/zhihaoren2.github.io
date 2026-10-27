@@ -6,8 +6,6 @@ pub: "ICCEPM, Las Vegas, USA"
 pub_date: "2022"
 authors:
   - "S. Yang"
-  - "Zhihao Ren"
+  - "Z. Ren"
   - "J. I. Kim"
-cover: "/assets/images/publications/cv-text-covers/2022-tunnel-excavation-ontology-small.svg"
-preview: "/assets/images/publications/cv-text-covers/2022-tunnel-excavation-ontology-large.svg"
 ---

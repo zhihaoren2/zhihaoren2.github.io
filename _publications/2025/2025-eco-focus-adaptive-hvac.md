@@ -5,8 +5,10 @@ selected: true
 pub: "Journal of Building Engineering"
 pub_date: "2025"
 authors:
-  - "Zhihao Ren"
-  - "et al."
+  - "Z. Ren"
+  - "S. Ma"
+  - "X. Li"
+  - "J. I. Kim"
 cover: "/assets/images/publications/ECO-FOCUS.jpg"
 links:
   DOI: "https://doi.org/10.1016/j.jobe.2025.113613"

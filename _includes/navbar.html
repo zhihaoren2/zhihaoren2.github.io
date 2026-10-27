@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-5 shadow-sm">
     <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
         <a class="navbar-brand" href="{{ '/' | relative_url }}" aria-label="Home">
     <img src="{{ '/assets/images/branding/navbar-logo.png' | relative_url }}" alt="Zhihao Ren homepage" class="zr-navbar-logo">
@@ -11,7 +11,11 @@
             <ul class="navbar-nav ml-auto">
                 {% for item in site.data.navigation.pages %}
                 <li class="nav-item {% if item.name == page.navbar_title or include.active_page == item.name %}active{% endif %}">
+                    {% if item.name == 'Contact' and page.title == 'Homepage' %}
+                    <a class="nav-link" href="#contact">{{ item.name }}</a>
+                    {% else %}
                     <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}</a>
+                    {% endif %}
                 </li>
                 {% endfor %}
             </ul>

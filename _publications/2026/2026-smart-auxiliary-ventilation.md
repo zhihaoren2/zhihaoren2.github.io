@@ -5,7 +5,7 @@ selected: true
 pub: "International Conference on Construction and Real Estate Management (ICCREM), Hong Kong SAR"
 pub_date: "2026"
 authors:
-  - "Zhihao Ren"
+  - "Z. Ren"
   - "et al."
 cover: "/assets/images/publications/ICCREM2026.png"
 ---

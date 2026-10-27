@@ -5,8 +5,9 @@ selected: true
 pub: "Energy and Buildings"
 pub_date: "2023"
 authors:
-  - "Zhihao Ren"
-  - "et al."
+  - "Z. Ren"
+  - "J. I. Kim"
+  - "J. Kim"
 cover: "/assets/images/publications/ITCM.jpg"
 links:
   DOI: "https://doi.org/10.1016/j.enbuild.2023.113667"

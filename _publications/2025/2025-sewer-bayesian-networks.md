@@ -8,7 +8,5 @@ authors:
   - "S. Ma"
   - "T. Zayed"
   - "J. Xing"
-  - "Zhihao Ren"
-cover: "/assets/images/publications/cv-text-covers/2025-sewer-bayesian-networks-small.svg"
-preview: "/assets/images/publications/cv-text-covers/2025-sewer-bayesian-networks-large.svg"
+  - "Z. Ren"
 ---

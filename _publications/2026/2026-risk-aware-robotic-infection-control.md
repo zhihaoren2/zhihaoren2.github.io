@@ -5,8 +5,10 @@ selected: true
 pub: "Developments in the Built Environment"
 pub_date: "2026"
 authors:
-  - "Zhihao Ren"
-  - "et al."
+  - "Z. Ren"
+  - "X. Li"
+  - "S. Ma"
+  - "J. I. Kim"
 cover: "/assets/images/publications/RRPV.jpg"
 links:
   DOI: "https://doi.org/10.1016/j.dibe.2026.100883"

@@ -9,8 +9,9 @@
   --app-separator: #e5e5e7;
   --app-soft: #f5f5f7;
   --app-shadow: 0 4px 20px rgba(0,0,0,.035);
+  --navbar-height: 86px;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--navbar-height) + 16px); }
 body, body.bg-light {
   background: var(--app-white)!important;
   color: var(--app-text);
@@ -19,6 +20,7 @@ body, body.bg-light {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.7;
+  padding-top: calc(var(--navbar-height) + 16px);
 }
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
   color: var(--app-text);
@@ -38,9 +40,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: none!important;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  min-height: var(--navbar-height);
 }
 .navbar .nav-link, .navbar .navbar-brand { color: var(--app-text)!important; }
 .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--app-blue)!important; }
+.navbar .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin-right: 16px;
+  padding: 0;
+  text-decoration: none;
+}
+.navbar .zr-navbar-logo {
+  display: block;
+  width: min(246px, calc(100% - 40px));
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.navbar .nav-item.active > .nav-link,
+.navbar .nav-item.zr-current > .nav-link,
+.navbar .nav-link[aria-current="page"] {
+  color: var(--app-blue)!important;
+  font-weight: 600;
+}
 .card { border-radius: 10px!important; border: 1px solid var(--app-separator)!important; background: white!important; box-shadow: var(--app-shadow)!important; }
 .card-header { background: var(--app-white); border-color: var(--app-separator); }
 .badge-primary, .btn-primary { background: var(--app-blue); border-color: var(--app-blue); }
@@ -48,11 +73,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .bg-light, .bg-white { background: #fff!important; }
 
 /* Left column: keep the ORIGINAL sidebar proportions, alter only photos and link treatment. */
+.profile-sticky,
+#navbar-year { top: calc(var(--navbar-height) + 16px); }
 .profile-sticky { z-index: 12; }
 .profile-card .card-body { padding-left: 20px!important; padding-right: 20px!important; }
 .profile-person-name { font-weight: 650; letter-spacing: -.04em; font-size: 1.55rem; margin-top: 8px; margin-bottom: 4px; }
 .profile-positions { font-size: 12.5px; line-height: 1.65; color: var(--app-muted); }
-.profile-email { margin: 10px 0 5px; overflow-wrap: anywhere; }
+.profile-email { margin: 12px 0 2px; overflow-wrap: anywhere; text-align: center; font-size: 12.5px; }
+.profile-email a { color: var(--app-blue); }
 .profile-photo-switch {
   position: relative; isolation: isolate; margin: 0 auto 17px; display: block;
   aspect-ratio: 6 / 6.8; width: 100%; max-width: 246px;
@@ -75,15 +103,101 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .profile-photo-switch:hover .profile-photo-alternate, .profile-photo-switch:focus-visible .profile-photo-alternate { opacity: 1; transform: scale(1.018); }
   .profile-photo-switch:hover .profile-photo-hint { opacity: 1; }
 }
-.profile-social { margin: 15px auto 1px; border-top: 1px solid var(--app-separator); padding-top: 7px; }
-.profile-social a {
-  display: flex; justify-content: space-between; align-items: center; gap: 10px;
-  padding: 7px 4px; color: var(--app-blue); font-size: 13px; font-weight: 510;
-  border-bottom: 1px solid #f1f1f2; text-decoration: none;
+.profile-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 12px auto 1px;
+  padding-top: 10px;
+  border-top: 1px solid var(--app-separator);
 }
-.profile-social a:last-child { border-bottom: none; }
-.profile-social a span { opacity: .55; transform: translateX(0); transition: transform .18s ease,opacity .18s ease; }
-.profile-social a:hover span { opacity: 1; transform: translateX(2px); }
+.profile-social a,
+.profile-social button {
+  display: inline-flex;
+  flex: 0 0 32px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--app-blue);
+  font: inherit;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.profile-social a:hover,
+.profile-social a:focus-visible,
+.profile-social button:hover,
+.profile-social button:focus-visible {
+  background: #f0f7ff;
+  color: var(--app-blue-hover);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.profile-social i { font-size: 20px; line-height: 1; }
+.wechat-profile { position: relative; display: inline-flex; }
+.wechat-popover {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  z-index: 40;
+  width: min(246px, calc(100vw - 32px));
+  padding: 8px;
+  border: 1px solid var(--app-separator);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(0,0,0,.16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s ease;
+}
+.wechat-popover img { display: block; width: 100%; height: auto; object-fit: contain; }
+.wechat-profile.is-open .wechat-popover,
+.wechat-profile:focus-within .wechat-popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+@media (hover: hover) and (pointer: fine) {
+  .wechat-profile:hover .wechat-popover { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+}
+
+/* Homepage layout: a stable flex grid replaces Masonry for career history. */
+.zr-career-grid > .zr-education-column,
+.zr-career-grid > .zr-experience-column { flex: 0 0 100%; max-width: 100%; min-width: 0; padding: 0 15px; }
+.zr-career-card h6 { font-size: 18px; line-height: 1.35; font-weight: 650; margin-bottom: 14px; }
+.zr-heading-emoji { display: inline-block; margin-right: .35em; font-style: normal; line-height: 1; vertical-align: -.04em; }
+.zr-career-card .media,
+.zr-career-card .media-body { min-width: 0; }
+.zr-career-card .media-body { overflow-wrap: break-word; }
+.zr-career-card .media-body .d-flex { gap: 6px; }
+.zr-career-card .zr-education-column .media > img,
+.zr-career-card .zr-experience-column .media > img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+.profile-photo-switch > .profile-photo-alternate,
+.profile-photo-switch:hover > .profile-photo-alternate,
+.profile-photo-switch:focus-visible > .profile-photo-alternate {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+.profile-photo-hint { display: none; }
+.contact-card { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 
 /* Original publication cards, with a much more deliberate image hierarchy. */
 .publication-apple-item { margin-left: 0; margin-right: 0; align-items: flex-start; }
@@ -117,6 +231,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .publication-dialog p { max-width: 70ch; font-size: 13px; margin: 12px auto 0; color: var(--app-muted); }
 .preview-dialog-close { position: absolute; top: 5px; right: 8px; background: white; border: none; border-radius: 50%; color: #555; font-size: 29px; line-height: 1; width: 35px; height: 35px; cursor: pointer; }
 
+/* Compact, CV-like academic activities page. */
+.activity-section { margin-bottom: 34px; }
+.activity-section-title { margin-bottom: 0; padding-bottom: 10px; border-bottom: 1px solid var(--app-separator); }
+.activity-list { border-bottom: 1px solid var(--app-separator); }
+.activity-item { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; padding: 16px 0; border-top: 1px solid var(--app-separator); }
+.activity-list .activity-item:first-child { border-top: 0; }
+.activity-period { color: var(--app-muted); font-size: 13px; line-height: 1.55; }
+.activity-title { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.45; letter-spacing: -.01em; }
+.activity-meta { margin: 3px 0 0; color: var(--app-muted); font-size: 13px; line-height: 1.55; }
+.activity-award { color: var(--app-blue); font-weight: 550; }
+
 /* Kamsekar-inspired, minimal Name / Email / Message / Send contact form. */
 .contact-card { margin-bottom: 34px; }
 .contact-card h2 { font-size: 1.34rem; }
@@ -137,74 +262,33 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .academic-send-button:hover { background: var(--app-blue-hover); }
 .contact-status { color: #55565a; font-size: 12px; margin: 0; max-width: 55ch; }
 @media (max-width: 767.98px) {
-  body { padding-top: 4.4rem; }
+  :root { --navbar-height: 66px; }
+  body { padding-top: calc(var(--navbar-height) + 12px); }
   .profile-sticky { position: static!important; top: auto!important; }
   .profile-photo-switch { max-width: 190px; }
   .profile-card { margin-bottom: 18px; }
   .publication-thumbnail-column { max-width: 200px; padding-bottom: 0!important; }
   .publication-apple-item > div:last-child { padding-top: 8px!important; }
   .publication-float-preview { display: none!important; }
+  .navbar .navbar-brand { justify-content: flex-start; width: auto; margin-right: 12px; }
+  .navbar .zr-navbar-logo { width: 120px; max-width: 38vw; }
+  .wechat-popover { width: min(190px, calc(100vw - 24px)); }
+  .activity-item { grid-template-columns: 1fr; gap: 3px; padding: 14px 0; }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .navbar .navbar-brand { flex: 0 0 calc(33.333333% - 20px); max-width: calc(33.333333% - 20px); }
+}
+@media (min-width: 992px) {
+  .zr-home-grid > .zr-home-sidebar { flex: 0 0 28.5%; max-width: 28.5%; }
+  .zr-home-grid > .zr-home-main { flex: 0 0 71.5%; max-width: 71.5%; }
+  .navbar .navbar-brand { flex: 0 0 calc(28.5% - 20px); max-width: calc(28.5% - 20px); }
+  .zr-career-grid > .zr-education-column { flex-basis: 42%; max-width: 42%; }
+  .zr-career-grid > .zr-experience-column { flex-basis: 58%; max-width: 58%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,*::before,*::after { transition-duration: .01ms!important; animation-duration: .01ms!important; }
 }
-
-/* ZR-CV-UPDATE-2026 BEGIN: icon-only social navigation */
-.profile-social {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin: 15px auto 1px;
-  padding-top: 12px;
-  border-top: 1px solid var(--app-separator);
-}
-.profile-social a, .profile-social a:last-child {
-  display: inline-flex;
-  flex: 0 0 32px;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  padding: 0;
-  border: none;
-  border-radius: 8px;
-  color: var(--app-blue);
-  font-size: 20px;
-  text-decoration: none;
-  transition: background-color .2s ease,transform .2s ease;
-}
-.profile-social a i {font-size: 20px;line-height:1}
-.profile-social a:hover, .profile-social a:focus-visible {
-  background: #f0f7ff;
-  color: var(--app-blue-hover);
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-/* ZR-CV-UPDATE-2026 END */
-
-/* ZR-NAVBAR-IMAGE-2026 BEGIN */
-.navbar .navbar-brand {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 16px;
-  padding-top: 0;
-  padding-bottom: 0;
-  text-decoration: none;
-}
-.navbar .zr-navbar-logo {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 30px;
-  max-width: 150px;
-  object-fit: contain;
-}
-@media (max-width: 575.98px) {
-  .navbar .zr-navbar-logo { max-height: 28px; max-width: 120px; }
-}
-/* ZR-NAVBAR-IMAGE-2026 END */
 
 /* Profile position with university logo */
 .profile-position-entry {
@@ -242,34 +326,3 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     line-height: 1.5;
     margin-top: 2px;
 }
-
-/* ZR-HOMEPAGE-NEWS-UPDATE-2026 BEGIN */
-.navbar .zr-navbar-logo {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 40px;
-  max-width: 170px;
-  object-fit: contain;
-}
-@media (max-width: 575.98px) {
-  .navbar .zr-navbar-logo { max-height: 32px; max-width: 120px; }
-}
-.zr-heading-emoji {
-  display: inline-block;
-  margin-right: .35em;
-  font-style: normal;
-  line-height: 1;
-  vertical-align: -.06em;
-}
-.profile-photo-switch > img.profile-photo-alternate {
-  object-fit: contain;
-  object-position: center center;
-  transform: none !important;
-}
-.profile-photo-switch:hover > img.profile-photo-alternate,
-.profile-photo-switch:focus-visible > img.profile-photo-alternate {
-  transform: none !important;
-}
-.profile-photo-hint { display: none !important; }
-/* ZR-HOMEPAGE-NEWS-UPDATE-2026 END */

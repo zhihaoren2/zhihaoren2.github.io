@@ -7,14 +7,15 @@ positions:
     department: "Department of Building Science"
     institution: "Tsinghua University"
     logo: "/assets/images/badges/tsinghua.svg"
-# TODO: add your academic email to enable the Email link and mailto fallback.
-email: "z.ren@my.cityu.edu.cn"
+email: "z.ren@my.cityu.edu.hk"
 # TODO: upload your CV PDF under assets/cv/ and update cv_link.
 cv_link: null
-gscholar: “hTyUaGkAAAAJ”    # Scholar ID or full Google Scholar profile URL
-orcid: “0000000230519087”       # Your 16-digit ORCID
-linkedin: “zhihaoren2”    # LinkedIn profile slug after /in/
+gscholar: "hTyUaGkAAAAJ"    # Scholar ID or full Google Scholar profile URL
+orcid: "0000000230519087"       # Your 16-digit ORCID
+linkedin: "zhihaoren2"    # LinkedIn profile slug after /in/
 github: "zhihaoren2"
+instagram: "zhihaoren2"    # Instagram username or full profile URL
+wechat_qr: "/assets/images/photos/wechat-qr.jpg"
 twitter: null
 short_bio_text_justify: false
 short_bio: >-

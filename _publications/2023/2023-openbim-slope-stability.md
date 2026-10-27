@@ -6,8 +6,6 @@ pub: "Hong Kong openBIM/openGIS Award, Hong Kong SAR · Grand Award (Professiona
 pub_date: "2023"
 authors:
   - "K. Dai"
-  - "Zhihao Ren"
+  - "Z. Ren"
   - "J. I. Kim"
-cover: "/assets/images/publications/cv-text-covers/2023-openbim-slope-stability-small.svg"
-preview: "/assets/images/publications/cv-text-covers/2023-openbim-slope-stability-large.svg"
 ---

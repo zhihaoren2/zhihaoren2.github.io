@@ -8,8 +8,6 @@ authors:
   - "S. Ma"
   - "T. Zayed"
   - "J. Xing"
-  - "Zhihao Ren"
-  - "Zhe Zou"
-cover: "/assets/images/publications/cv-text-covers/2026-sewer-ai-models-review-small.svg"
-preview: "/assets/images/publications/cv-text-covers/2026-sewer-ai-models-review-large.svg"
+  - "Z. Ren"
+  - "Z. Zou"
 ---

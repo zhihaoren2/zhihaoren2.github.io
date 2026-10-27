@@ -1,0 +1,12 @@
+---
+layout: default
+title: News
+navbar_title: News
+---
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    <h1 class="h3 mb-3">News</h1>
+    {% include widgets/news_card.html limit=site.news.size %}
+  </div>
+</div>

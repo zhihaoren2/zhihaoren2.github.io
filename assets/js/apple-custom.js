@@ -69,12 +69,76 @@
   window.addEventListener('resize', hideFloating);
   document.addEventListener('keydown', event => { if (event.key === 'Escape') hideFloating(); });
 
+  document.querySelectorAll('.profile-email-link').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const user = (link.dataset.emailUser || '').trim();
+      const domain = (link.dataset.emailDomain || '').trim();
+      if (user && domain) window.location.href = `mailto:${user}@${domain}`;
+    });
+  });
+
+  const wechat = document.querySelector('.wechat-profile');
+  const wechatTrigger = wechat?.querySelector('.wechat-trigger');
+  const wechatPopover = wechat?.querySelector('.wechat-popover');
+  function setWechatOpen(open) {
+    if (!wechat || !wechatTrigger || !wechatPopover) return;
+    wechat.classList.toggle('is-open', open);
+    wechatTrigger.setAttribute('aria-expanded', String(open));
+    wechatPopover.setAttribute('aria-hidden', String(!open));
+  }
+  wechatTrigger?.addEventListener('click', event => {
+    event.stopPropagation();
+    setWechatOpen(!wechat.classList.contains('is-open'));
+  });
+  document.addEventListener('click', event => {
+    if (wechat && !wechat.contains(event.target)) setWechatOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setWechatOpen(false);
+  });
+
+  const homeNavItem = Array.from(document.querySelectorAll('.navbar .nav-item')).find(item =>
+    item.querySelector('.nav-link')?.textContent.trim().toLowerCase() === 'home'
+  );
+  const contactNavItem = Array.from(document.querySelectorAll('.navbar .nav-item')).find(item =>
+    item.querySelector('.nav-link')?.textContent.trim().toLowerCase() === 'contact'
+  );
+  const contactSection = document.getElementById('contact');
+  if (homeNavItem && contactNavItem && contactSection) {
+    let navFramePending = false;
+    const updateHomeNav = () => {
+      navFramePending = false;
+      const navHeight = document.querySelector('.navbar')?.getBoundingClientRect().height || 0;
+      const rect = contactSection.getBoundingClientRect();
+      const contactIsCurrent = rect.top <= navHeight + 24 && rect.bottom > navHeight + 24;
+      [[homeNavItem, !contactIsCurrent], [contactNavItem, contactIsCurrent]].forEach(([item, current]) => {
+        item.classList.toggle('active', current);
+        item.classList.toggle('zr-current', current);
+        const navLink = item.querySelector('.nav-link');
+        if (current) navLink.setAttribute('aria-current', 'page');
+        else navLink.removeAttribute('aria-current');
+      });
+    };
+    const scheduleHomeNavUpdate = () => {
+      if (navFramePending) return;
+      navFramePending = true;
+      requestAnimationFrame(updateHomeNav);
+    };
+    updateHomeNav();
+    window.addEventListener('scroll', scheduleHomeNavUpdate, { passive: true });
+    window.addEventListener('hashchange', scheduleHomeNavUpdate);
+    window.addEventListener('pageshow', scheduleHomeNavUpdate);
+  }
+
   const form = document.getElementById('academic-contact-form');
   const status = document.getElementById('contact-status');
   if (form) {
     form.addEventListener('submit', event => {
       const endpoint = (form.dataset.endpoint || '').trim();
-      const recipient = (form.dataset.recipient || '').trim();
+      const recipientUser = (form.dataset.recipientUser || '').trim();
+      const recipientDomain = (form.dataset.recipientDomain || '').trim();
+      const recipient = recipientUser && recipientDomain ? `${recipientUser}@${recipientDomain}` : '';
       if (/^https:\/\/formspree\.io\/f\/[\w-]+$/i.test(endpoint)) {
         form.action = endpoint;
         form.method = 'POST';

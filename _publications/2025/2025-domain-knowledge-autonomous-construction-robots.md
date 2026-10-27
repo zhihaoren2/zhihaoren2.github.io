@@ -5,6 +5,10 @@ selected: true
 pub: "International Consortium of Construction Engineering and Project Management (ICCEPM), South Korea · Best Paper Award"
 pub_date: "2025"
 authors:
-  - "Zhihao Ren"
-  - "et al."
+  - "Z. Ren"
+  - "H. J. Lee"
+  - "M. S. Khan"
+  - "X. Zeng"
+  - "T. Y. Kim"
+  - "J. I. Kim"
 ---

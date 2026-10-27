@@ -5,7 +5,7 @@ selected: true
 pub: "Buildings"
 pub_date: "2025"
 authors:
-  - "Zhihao Ren"
+  - "Z. Ren"
   - "J. I. Kim"
 cover: "/assets/images/publications/buildings-15-02374-g006.png"
 links:
