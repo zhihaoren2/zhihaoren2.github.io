@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
     "\\assets\\css",
     "\\assets\\images",
     "\\assets\\js",
-    "\\_data",
+    "\\_includes",
     "\\_includes\\widgets",
-    "\\_publications",
     "\\_publications\\2022",
     "\\_publications\\2026"
   ],
-  "SelectedNode": "\\_publications\\2026\\2026-smart-auxiliary-ventilation.md",
+  "SelectedNode": "\\_includes\\widgets\\contact_form.html",
   "PreviewInSolutionExplorer": false
 }
