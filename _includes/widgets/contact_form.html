@@ -1,31 +1,31 @@
 <section id="contact" class="card contact-card mt-4" aria-labelledby="contact-title">
-  <div class="card-body px-4 py-4">
-    <h2 id="contact-title" class="h4 mb-3">Get in touch</h2>
-    <p class="contact-introduction">If you have any questions about my research, see an opportunity to collaborate, are interested in thoughtful science outreach (or simply want to say hello) I¡¯d be delighted to hear from you!</p>
-    <!--
+    <div class="card-body px-4 py-4">
+        <h2 id="contact-title" class="h4 mb-3">Get in touch</h2>
+        <p class="contact-introduction">If you have any questions about my research, see an opportunity to collaborate, or are interested in thoughtful science outreach (or simply want to say hello), I'd be delighted to hear from you!</p>
+        <!--
       Same Name / Email / Message / Send interface as the cited reference.
       This static GitHub Pages form NEEDS a receiver. Set formspree_endpoint in _data/contact.yml,
       or set a real profile email for mailto fallback. Never pretend a message was sent.
     -->
-    {% assign contact_email_parts = site.data.profile.email | split: '@' %}
-    <form id="academic-contact-form" class="academic-contact-form" data-endpoint="{{ site.data.contact.formspree_endpoint | escape }}" data-recipient-user="{{ contact_email_parts[0] | escape }}" data-recipient-domain="{{ contact_email_parts[1] | escape }}" action="#contact" method="POST">
-      <div class="contact-field-group">
-        <label for="contact-name">Name</label>
-        <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required>
-      </div>
-      <div class="contact-field-group">
-        <label for="contact-email">Email</label>
-        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
-      </div>
-      <div class="contact-field-group">
-        <label for="contact-message">Message</label>
-        <textarea id="contact-message" name="message" rows="5" minlength="3" maxlength="5000" required></textarea>
-      </div>
-      <!-- Formspree uses the email field as the reply-to address. -->
-      <div class="contact-form-footer">
-        <button type="submit" class="academic-send-button">Send</button>
-        <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
-      </div>
-    </form>
-  </div>
+        {% assign contact_email_parts = site.data.profile.email | split: '@' %}
+        <form id="academic-contact-form" class="academic-contact-form" data-endpoint="{{ site.data.contact.formspree_endpoint | escape }}" data-recipient-user="{{ contact_email_parts[0] | escape }}" data-recipient-domain="{{ contact_email_parts[1] | escape }}" action="#contact" method="POST">
+            <div class="contact-field-group">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+            </div>
+            <div class="contact-field-group">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+            </div>
+            <div class="contact-field-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" minlength="3" maxlength="5000" required></textarea>
+            </div>
+            <!-- Formspree uses the email field as the reply-to address. -->
+            <div class="contact-form-footer">
+                <button type="submit" class="academic-send-button">Send</button>
+                <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+            </div>
+        </form>
+    </div>
 </section>
