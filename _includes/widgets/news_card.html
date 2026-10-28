@@ -3,32 +3,40 @@
 {% for year in news_by_year %}
 <h2 class="pt-4" id="year-{{ year.name }}">{{ year.name }}</h2>
 <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+    {% assign previous_month = "" %}
     {% for item in year.items %}
-    {% assign big_image = item.preview | default: item.cover %}
-    <article class="row no-gutters publication-apple-item {% unless forloop.last %}border-bottom{% endunless %}">
-        {% if item.cover %}
+    {% assign media_cover = item.cover | default: item.images.first %}
+    {% assign item_month = item.date | date: "%Y-%m" %}
+    {% assign next_month = "" %}
+    {% unless forloop.last %}
+        {% assign next_index = forloop.index0 | plus: 1 %}
+        {% assign next_item = year.items[next_index] %}
+        {% assign next_month = next_item.date | date: "%Y-%m" %}
+    {% endunless %}
+    <article class="row no-gutters publication-apple-item{% if item_month == previous_month %} news-same-month{% endif %}{% unless forloop.last %}{% unless next_month == item_month %} border-bottom{% endunless %}{% endunless %}">
+        {% if media_cover %}
         <div class="col-12 col-sm-9 col-xl-10 p-3 pr-sm-0">
         {% else %}
         <div class="col p-3">
         {% endif %}
             <div class="news-item-line">
-                <time class="news-item-date text-muted no-break" datetime="{{ item.date | date: '%Y-%m-%d' }}">
-                    {% if item.date_precision == 'year' %}{{ item.date | date: "%Y" }}{% elsif item.date_precision == 'month' %}{{ item.date | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %d, %Y" }}{% endif %}
-                </time>
+                {% if item_month != previous_month %}
+                <time class="news-item-date text-muted no-break" datetime="{{ item.date | date: '%Y-%m' }}">{{ item.date | date: "%b" }}</time>
+                {% else %}
+                <span class="news-item-date news-item-date-placeholder" aria-hidden="true"></span>
+                {% endif %}
                 <h5 class="mt-0 mb-0 font-weight-normal publication-title flex-grow-1">
-                    {% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}
+                    {% if item.inline_link %}{% capture inline_anchor %}<a href="{{ item.inline_link.url }}" target="_blank" rel="noopener noreferrer">{{ item.inline_link.text }}</a>{% endcapture %}{{ item.title | replace_first: item.inline_link.text, inline_anchor }}{% else %}{{ item.title }}{% endif %}{% if item.link %}<a class="news-doi-link" href="{{ item.link }}" target="_blank" rel="noopener noreferrer" aria-label="Open DOI for {{ item.title | escape }}">[doi]</a>{% endif %}
                 </h5>
             </div>
         </div>
-        {% if item.cover %}
+        {% if media_cover %}
         <div class="col-12 col-sm-3 col-xl-2 p-3 publication-thumbnail-column">
-            <button type="button" class="publication-preview-trigger" data-preview-src="{{ big_image | relative_url }}" data-preview-title="{{ item.title | escape }}" aria-label="View large image for {{ item.title | escape }}" title="Hover to see a larger image; click to open">
-                <img src="{{ item.cover | relative_url }}" alt="Thumbnail for {{ item.title | escape }}" class="publication-thumb" loading="lazy" decoding="async">
-                <span class="publication-enlarge-icon" aria-hidden="true">↗</span>
-            </button>
+            {% include widgets/media_preview.html item=item %}
         </div>
         {% endif %}
     </article>
+    {% assign previous_month = item_month %}
     {% endfor %}
 </div>
 {% endfor %}

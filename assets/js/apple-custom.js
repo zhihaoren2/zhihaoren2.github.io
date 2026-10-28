@@ -7,9 +7,16 @@
   const modalImage = document.getElementById('publication-dialog-image');
   const modalCaption = document.getElementById('publication-dialog-caption');
   const modalClose = document.getElementById('preview-dialog-close');
+  const modalPrev = document.getElementById('preview-dialog-prev');
+  const modalNext = document.getElementById('preview-dialog-next');
+  const modalControls = document.getElementById('preview-dialog-controls');
+  const modalCounter = document.getElementById('preview-dialog-counter');
   const hoverOk = matchMedia('(hover: hover) and (pointer: fine)').matches;
   let activeTrigger = null;
   let lastPointer = { x: 0, y: 0 };
+  let galleryItems = [];
+  let galleryIndex = 0;
+  let galleryTitle = '';
 
   function hideFloating() {
     if (preview) preview.classList.remove('visible');
@@ -24,7 +31,7 @@
     preview.style.top = Math.round(Math.max(12, Math.min(innerHeight - h - 12, y - h * .3))) + 'px';
   }
   function showFloating(button, x, y) {
-    if (!hoverOk || !preview || !floatingImage) return;
+    if (!hoverOk || !preview || !floatingImage || button.dataset.gallerySrcs) return;
     const src = button.dataset.previewSrc;
     if (!src) return;
     activeTrigger = button;
@@ -34,6 +41,18 @@
     moveFloating(x, y);
     // Reposition once the large image dimensions are known.
     floatingImage.onload = () => { if (activeTrigger === button) moveFloating(lastPointer.x, lastPointer.y); };
+  }
+  function showGalleryImage(index) {
+    if (!modalImage || !galleryItems.length) return;
+    galleryIndex = (index + galleryItems.length) % galleryItems.length;
+    modalImage.src = galleryItems[galleryIndex];
+    modalImage.alt = galleryItems.length > 1 ? `${galleryTitle} (${galleryIndex + 1} of ${galleryItems.length})` : galleryTitle;
+    if (modalCaption) modalCaption.textContent = galleryTitle;
+    const multiple = galleryItems.length > 1;
+    if (modalControls) modalControls.hidden = !multiple;
+    if (modalCounter) {
+      modalCounter.textContent = multiple ? `${galleryIndex + 1} / ${galleryItems.length}` : '';
+    }
   }
   document.querySelectorAll('.publication-preview-trigger').forEach(button => {
     button.addEventListener('pointerenter', event => {
@@ -56,18 +75,27 @@
     button.addEventListener('click', () => {
       hideFloating();
       if (!dialog || !modalImage) return;
-      modalImage.src = button.dataset.previewSrc;
-      modalImage.alt = button.dataset.previewTitle || 'Publication figure';
-      if (modalCaption) modalCaption.textContent = button.dataset.previewTitle || '';
+      galleryItems = (button.dataset.gallerySrcs || '').split('|').filter(Boolean);
+      if (!galleryItems.length && button.dataset.previewSrc) galleryItems = [button.dataset.previewSrc];
+      galleryTitle = button.dataset.previewTitle || 'Publication figure';
+      galleryIndex = 0;
+      showGalleryImage(galleryIndex);
       if (typeof dialog.showModal === 'function') dialog.showModal();
       else window.open(button.dataset.previewSrc, '_blank', 'noopener');
     });
   });
+  modalPrev?.addEventListener('click', () => showGalleryImage(galleryIndex - 1));
+  modalNext?.addEventListener('click', () => showGalleryImage(galleryIndex + 1));
   modalClose?.addEventListener('click', () => dialog?.close());
   dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   window.addEventListener('scroll', hideFloating, { passive: true });
   window.addEventListener('resize', hideFloating);
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') hideFloating(); });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') hideFloating();
+    if (!dialog?.open || galleryItems.length < 2) return;
+    if (event.key === 'ArrowLeft') showGalleryImage(galleryIndex - 1);
+    if (event.key === 'ArrowRight') showGalleryImage(galleryIndex + 1);
+  });
 
   document.querySelectorAll('.profile-email-link').forEach(link => {
     link.addEventListener('click', event => {

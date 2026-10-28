@@ -1,0 +1,11 @@
+{% assign media_item = include.item %}
+{% assign media_images = media_item.images %}
+{% assign media_count = media_images | size %}
+{% assign media_cover = media_item.cover | default: media_images.first %}
+{% assign media_large = media_item.preview | default: media_cover %}
+{% if media_cover %}
+<button type="button" class="publication-preview-trigger" data-preview-src="{{ media_large | relative_url }}" data-preview-title="{{ media_item.title | escape }}"{% if media_count > 1 %} data-gallery-srcs="{% for image in media_images %}{{ image | relative_url }}{% unless forloop.last %}|{% endunless %}{% endfor %}"{% endif %} aria-label="{% if media_count > 1 %}Browse {{ media_count }} images for{% else %}View large image for{% endif %} {{ media_item.title | escape }}" title="{% if media_count > 1 %}Click to browse {{ media_count }} photos{% else %}Hover to see a larger image; click to open{% endif %}">
+  <img src="{{ media_cover | relative_url }}" alt="Thumbnail for {{ media_item.title | escape }}" class="publication-thumb" loading="lazy" decoding="async">
+  {% if media_count > 1 %}<span class="publication-gallery-count" aria-hidden="true">{{ media_count }} photos</span>{% else %}<span class="publication-enlarge-icon" aria-hidden="true">↗</span>{% endif %}
+</button>
+{% endif %}

@@ -2,10 +2,11 @@
 {% assign hide_bottom_border = include.hide_bottom_border %}
 {% assign first = include.first %}
 {% assign last = include.last %}
+{% assign media_cover = item.cover | default: item.images.first %}
 
 <div class="border-bottom border-gray p-3 {% if hide_bottom_border %}border-0{% endif %}">
     <div class="row">
-        <div class="col-12">
+        <div class="{% if media_cover %}col-12 col-sm-9{% else %}col-12{% endif %}">
             <h5 class="mb-2">
                 <a href="{{ item.url | relative_url }}" class="text-dark text-decoration-none">
                     {{ item.title }}
@@ -35,5 +36,10 @@
                 </a>
             </div>
         </div>
+        {% if media_cover %}
+        <div class="col-12 col-sm-3 pt-3 pt-sm-0 publication-thumbnail-column">
+            {% include widgets/media_preview.html item=item %}
+        </div>
+        {% endif %}
     </div>
 </div>

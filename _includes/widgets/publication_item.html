@@ -1,8 +1,8 @@
 {% assign item = include.item %}
-{% assign big_image = item.preview | default: item.cover %}
+{% assign media_cover = item.cover | default: item.images.first %}
 <!-- Retains the official publication card's bootstrap row structure and metadata. -->
 <article class="row no-gutters publication-apple-item border-bottom">
-  {% if item.cover %}
+  {% if media_cover %}
   <div class="col-12 col-sm-9 col-xl-10 p-3 pr-sm-0">
   {% else %}
   <div class="col p-3">
@@ -38,12 +38,9 @@
       {% endif %}
     {% endif %}
   </div>
-  {% if item.cover %}
+  {% if media_cover %}
   <div class="col-12 col-sm-3 col-xl-2 p-3 publication-thumbnail-column">
-    <button type="button" class="publication-preview-trigger" data-preview-src="{{ big_image | relative_url }}" data-preview-title="{{ item.title | escape }}" aria-label="View large figure for {{ item.title | escape }}" title="Hover to see a larger image; click to open">
-      <img src="{{ item.cover | relative_url }}" alt="Thumbnail for {{ item.title | escape }}" class="publication-thumb" loading="lazy" decoding="async">
-      <span class="publication-enlarge-icon" aria-hidden="true">↗</span>
-    </button>
+    {% include widgets/media_preview.html item=item %}
   </div>
   {% endif %}
 </article>

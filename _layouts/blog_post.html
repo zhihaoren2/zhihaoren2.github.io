@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/apple-custom.css' | relative_url }}?v=20261028-gallery5">
 </head>
 <body class="bg-light d-flex flex-column min-vh-100" {{ page.body_attr }}>
     {% include navbar.html active_page="Blog" %}
@@ -40,6 +41,13 @@
                             {% endif %}
                         </div>
                     </header>
+
+                    {% assign media_cover = page.cover | default: page.images.first %}
+                    {% if media_cover %}
+                    <div class="content-media-preview mb-4">
+                        {% include widgets/media_preview.html item=page %}
+                    </div>
+                    {% endif %}
 
                     <div class="blog-content">
                         {{ content }}
@@ -86,5 +94,7 @@
     <script src="{{ '/assets/js/common.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/bubble_visual_hash.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/semantic_scholar_citation_count.js' | relative_url }}"></script>
+    {% include widgets/media_dialog.html %}
+    <script defer src="{{ '/assets/js/apple-custom.js' | relative_url }}?v=20261028-gallery5"></script>
 </body>
 </html>
