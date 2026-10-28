@@ -12,6 +12,8 @@ authors:
   - "X. Zeng"
   - "T. Y. Kim"
   - "J. I. Kim"
+cover: "/assets/images/publications/ICCEPM2025.png"
 links:
   DOI: "https://doi.org/10.6106/ICCEPM.2025.0504"
+ 
 ---
