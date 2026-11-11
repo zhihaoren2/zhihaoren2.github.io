@@ -9,4 +9,5 @@ authors:
   - "Z. Ren"
   - "J. I. Kim"
   - "J. Seo"
+cover: "/assets/images/publications/SBE22.png"
 ---
