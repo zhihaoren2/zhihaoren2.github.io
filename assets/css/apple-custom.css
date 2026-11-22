@@ -145,14 +145,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .profile-social i { font-size: 30px; line-height: 1; }
 .profile-social-wide {
-  gap: clamp(4px, 1.5vw, 18px);
+  gap: clamp(4px, 1vw, 18px);
   margin: 0;
-  padding-top: 14px;
+  padding: 14px clamp(6px, 3vw, 24px) 18px;
 }
 .profile-social-wide a,
 .profile-social-wide button {
   flex-basis: auto;
-  width: clamp(30px, 6vw, 46px);
+  width: clamp(26px, 4.2vw, 46px);
   height: 44px;
 }
 .profile-social-wide i { font-size: clamp(24px, 8.25vw, 34px); }
@@ -167,11 +167,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   overflow-wrap: anywhere;
 }
 .profile-social-wide .profile-email-link i { font-size: clamp(16px, 4vw, 24px); }
-@media (max-width: 359.98px) {
-  .profile-social-wide { gap: 4px; }
-  .profile-social-wide a,
-  .profile-social-wide button { width: 26px; }
-  .profile-social-wide .profile-email-link { padding-inline: 2px; }
+@media (max-width: 379.98px) {
+  .profile-social-wide { padding-inline: 5px; }
+  .profile-social-wide .profile-email-link { padding-inline: 2px; font-size: clamp(11px, 3.2vw, 12px); }
   .profile-social-wide .profile-email-link i { display: none; }
 }
 .wechat-profile { position: relative; display: inline-flex; }
