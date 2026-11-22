@@ -106,24 +106,21 @@
     });
   });
 
-  const wechat = document.querySelector('.wechat-profile');
-  const wechatTrigger = wechat?.querySelector('.wechat-trigger');
-  const wechatPopover = wechat?.querySelector('.wechat-popover');
-  function setWechatOpen(open) {
-    if (!wechat || !wechatTrigger || !wechatPopover) return;
-    wechat.classList.toggle('is-open', open);
-    wechatTrigger.setAttribute('aria-expanded', String(open));
-    wechatPopover.setAttribute('aria-hidden', String(!open));
+  const wechatProfiles = document.querySelectorAll('.wechat-profile');
+  function setWechatOpen(profile, open) {
+    profile.classList.toggle('is-open', open);
+    profile.querySelector('.wechat-trigger').setAttribute('aria-expanded', String(open));
+    profile.querySelector('.wechat-popover').setAttribute('aria-hidden', String(!open));
   }
-  wechatTrigger?.addEventListener('click', event => {
-    event.stopPropagation();
-    setWechatOpen(!wechat.classList.contains('is-open'));
-  });
   document.addEventListener('click', event => {
-    if (wechat && !wechat.contains(event.target)) setWechatOpen(false);
+    const selectedProfile = event.target.closest?.('.wechat-trigger')?.closest('.wechat-profile');
+    wechatProfiles.forEach(profile => {
+      if (profile === selectedProfile) setWechatOpen(profile, !profile.classList.contains('is-open'));
+      else if (!profile.contains(event.target)) setWechatOpen(profile, false);
+    });
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') setWechatOpen(false);
+    if (event.key === 'Escape') wechatProfiles.forEach(profile => setWechatOpen(profile, false));
   });
 
   const homeNavItem = Array.from(document.querySelectorAll('.navbar .nav-item')).find(item =>
