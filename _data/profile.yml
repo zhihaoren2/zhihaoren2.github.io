@@ -6,7 +6,7 @@ positions:
   - name: "Postdoctoral Fellow"
     department: "Dept. of Building Science"
     institution: "Tsinghua University"
-    logo: "/assets/images/badges/tsinghua.svg"
+    logo: "/assets/images/badges/tsinghua.png"
 email: "z.ren@my.cityu.edu.hk"
 # TODO: upload your CV PDF under assets/cv/ and update cv_link.
 cv_link: null
@@ -44,7 +44,7 @@ education:
 
 experience:
   - name: "Tsinghua University"
-    logo: "/assets/images/badges/tsinghua.svg"
+    logo: "/assets/images/badges/tsinghua.png"
     dept: "Department of Building Science"
     position: "Postdoctoral Fellow"
     date: "Aug 2026–Present"
