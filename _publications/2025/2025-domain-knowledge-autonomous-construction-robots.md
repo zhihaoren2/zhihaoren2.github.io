@@ -12,7 +12,7 @@ authors:
   - "X. Zeng"
   - "T. Y. Kim"
   - "J. I. Kim"
-cover: "/assets/images/publications/ICCEPM2025.png"
+cover: "/assets/images/publications/ICCEPM2025.jpg"
 links:
   DOI: "https://doi.org/10.6106/ICCEPM.2025.0504"
  
